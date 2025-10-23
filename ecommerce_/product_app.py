@@ -13,11 +13,10 @@ st.set_page_config(page_title="상품 관리 시스템", page_icon="🛒", layou
 # MySQL 연결 함수
 def get_connection():
     return pymysql.connect(
-        host=os.getenv('DB_HOST'),
-        user=os.getenv('DB_USER'),
-        password=os.getenv('DB_PASSWORD'),
-        database=os.getenv('DB_NAME'),
-        port=int(os.getenv('DB_PORT'))
+        host=os.getenv('DB_HOST', 'localhost'),
+        user=os.getenv('DB_USER', 'joy'),
+        password=os.getenv('DB_PASSWORD', '1234'),
+        database=os.getenv('DB_NAME', 'ecommerce_db'),
     )
 
 # 상품 조회 (Read)
