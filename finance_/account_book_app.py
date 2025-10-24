@@ -115,19 +115,19 @@ def main():
     with tab2:
         st.header("➕ 새 거래 추가")
         
+        # 수입/지출 선택
+        trans_type = st.radio("구분", ["수입", "지출"], horizontal=True)
+        
+        # 카테고리 선택 (수입/지출에 따라 다름)
+        if trans_type == "수입":
+            categories = ["월급", "용돈", "상여금", "투자수익", "기타수입"]
+        else:
+            categories = ["식비", "교통", "쇼핑", "공과금", "통신비", "의료", "기타지출"]
+        
         with st.form("add_transaction_form"):
             # 날짜 선택
             trans_date = st.date_input("날짜", value=date.today())
-            
-            # 수입/지출 선택
-            trans_type = st.radio("구분", ["수입", "지출"], horizontal=True)
-            
-            # 카테고리 선택 (수입/지출에 따라 다름)
-            if trans_type == "수입":
-                categories = ["월급", "용돈", "상여금", "투자수익", "기타수입"]
-            else:
-                categories = ["식비", "교통", "쇼핑", "공과금", "통신비", "의료", "기타지출"]
-            
+                       
             category = st.selectbox("카테고리", categories)
             
             # 설명
